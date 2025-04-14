@@ -1,0 +1,44 @@
+ .imgs{
+        width: 300px;
+        height: 250px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+.mainbody{
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:rgb(134, 65, 15);
+    background-color: whitesmoke;
+}
+ul, ol {
+    text-align: center;
+    list-style-position: inside;
+  }
+  ol{
+   font-size: 30px;
+  }
+  ul{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  #header{
+    background-color: black;
+    padding: 30px;
+    font-style: italic;
+    font-size: 50px;
+  }
+  .link{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: navy
+  }
+  .link:hover{
+    color:rgb(58, 58, 239);
+  }
+  #video{
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
