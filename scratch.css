@@ -45,7 +45,7 @@ ul, ol {
     color: navy;
     text-decoration: underline; 
     font-weight: bold; 
-    padding: 60px; 
+    padding: 70px; 
 }
 a[href^="#"]:hover {
     color: rgb(58, 58, 239);
