@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +6,7 @@
     <title>Snake Game</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             background-color: #f0f0f0;
             display: flex;
             flex-direction: column;
@@ -26,6 +26,11 @@
             font-size: 24px;
             margin: 10px 0;
             color: #333;
+        }
+        #high-score {
+            font-size: 20px;
+            margin: 5px 0;
+            color:  #4caf50;
         }
         #instructions {
             font-size: 16px;
@@ -55,18 +60,21 @@
         }
         @media (max-width: 600px) {
             canvas {
-                width: 300px;
-                height: 300px;
+                width: 600px;
+                height: 600px;
             }
             #score {
-                font-size: 20px;
+                font-size: 50px;
+            }
+            #high-score {
+                font-size: 45px;
             }
             #instructions {
                 font-size: 14px;
                 max-width: 300px;
             }
             #game-over {
-                font-size: 24px;
+                font-size: 50px;
             }
         }
     </style>
@@ -74,6 +82,7 @@
 <body>
     <div class="game-container">
         <div id="score">Score: 0</div>
+        <div id="high-score">High Score: 0</div>
         <div id="instructions">
             Use arrow keys to move the snake. Eat red food to grow and score points. Avoid hitting the walls or yourself. Click Restart after Game Over.
         </div>
@@ -86,6 +95,7 @@
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const scoreDisplay = document.getElementById('score');
+        const highScoreDisplay = document.getElementById('high-score');
         const gameOverDisplay = document.getElementById('game-over');
         const restartButton = document.getElementById('restart');
 
@@ -96,8 +106,12 @@
         let dx = 0;
         let dy = 0;
         let score = 0;
+        let highScore = localStorage.getItem('snakeHighScore') ? parseInt(localStorage.getItem('snakeHighScore')) : 0;
         let gameSpeed = 105; // Set to 105ms as requested
         let gameLoop;
+
+        // Initialize high score display
+        highScoreDisplay.textContent = `High Score: ${highScore}`;
 
         function drawGame() {
             // Clear canvas
@@ -145,6 +159,12 @@
 
         function endGame() {
             clearInterval(gameLoop);
+            // Update high score if current score is higher
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('snakeHighScore', highScore);
+                highScoreDisplay.textContent = `High Score: ${highScore}`;
+            }
             gameOverDisplay.style.display = 'block';
             restartButton.style.display = 'block';
         }
